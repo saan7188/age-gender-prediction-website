@@ -1,2 +1,17 @@
-venv/ 
-installed_packages.txt 
+# Ignore virtual environment
+venv/
+
+# Ignore installed packages list
+installed_packages.txt
+
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore IDE files (e.g., for VS Code, etc.)
+.vscode/
+
+# Ignore other unnecessary files
+*.db
+*.log
+.DS_Store
