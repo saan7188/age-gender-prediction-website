@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="background-slideshow">
+    {% for i in range(1, 11) %}
+        <img src="{{ url_for('static', filename='images/backgrounds/bg' ~ i ~ '.jpeg') }}" class="bg-slide">
+    {% endfor %}
+</div>
+
+<div class="upload-box">
+    <h1>{{ _('Welcome to Age and Gender Prediction') }}</h1>
+    <h2 class="glow">{{ _('Upload Image for Prediction') }}</h2>
+
+    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit" class="animated-btn">{{ _('Predict') }}</button>
+    </form>
+
+    <br>
+
+    <p>
+        {{ _('✨ You can also use') }} 
+        <strong>{{ _('Live Detection') }}</strong> 
+        {{ _('for webcam prediction!') }}
+    </p>
+
+    <button class="animated-btn" onclick="openModal()">{{ _('Give Feedback') }}</button>
+    </div>
+{% endblock %}

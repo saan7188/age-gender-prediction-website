@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="feedbacks-container">
+    <h2 class="glow">🗣 All Feedbacks</h2>
+
+    <div class="filter-bar">
+        <label for="ratingFilter">Filter by Rating:</label>
+        <select id="ratingFilter" onchange="filterFeedbacks()">
+            <option value="all">All</option>
+            <option value="⭐">⭐</option>
+            <option value="⭐⭐">⭐⭐</option>
+            <option value="⭐⭐⭐">⭐⭐⭐</option>
+            <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+            <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+        </select>
+
+        <input type="text" id="searchBox" placeholder="Search comments..." onkeyup="filterFeedbacks()">
+    </div>
+
+    <div id="feedbackList">
+        {% for fb in feedbacks %}
+        <div class="feedback-card" data-rating="{{ fb[0] }}" data-comment="{{ fb[1]|lower }}">
+            <p><strong>Rating:</strong> {{ fb[0] }}</p>
+            <p><strong>Comment:</strong> {{ fb[1] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+// Function to filter feedbacks based on rating and search input
+function filterFeedbacks() {
+    const ratingFilter = document.getElementById('ratingFilter').value;
+    const searchQuery = document.getElementById('searchBox').value.toLowerCase();
+    const feedbackCards = document.querySelectorAll('.feedback-card');
+
+    feedbackCards.forEach(card => {
+        const rating = card.getAttribute('data-rating');
+        const comment = card.getAttribute('data-comment');
+
+        // Check if the feedback matches the selected rating filter
+        const matchesRating = (ratingFilter === 'all' || rating === ratingFilter);
+
+        // Check if the feedback comment matches the search query
+        const matchesSearch = comment.includes(searchQuery);
+
+        // Show or hide feedback based on the filters
+        if (matchesRating && matchesSearch) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+{% endblock %}

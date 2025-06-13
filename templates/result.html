@@ -1,0 +1,22 @@
+<!-- templates/result.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="result-container">
+    <h2 class="glow">Prediction Result</h2>
+
+    <div class="result-card">
+        <div class="image-preview">
+            <img src="{{ image_file }}" alt="Uploaded Image" id="result-image">
+            <div id="ar-overlay"></div>
+        </div>
+
+        <div class="prediction-info">
+            <p><strong>Predicted Age:</strong> {{ age }} ({{ age_conf }}%)</p>
+            <p><strong>Predicted Gender:</strong> {{ gender }} ({{ gender_conf }}%)</p>
+
+             <button class="animated-btn" onclick="shareResult()">🔗 Share</button>
+            <button class="animated-btn" onclick="openModal()">Give Feedback</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

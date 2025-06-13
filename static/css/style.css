@@ -1,0 +1,355 @@
+/* static/css/style.css */
+
+/* Reset & Base */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f0f0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+[data-theme='dark'] body {
+    background: #121212;
+    color: #f9f9f9;
+}
+a { text-decoration: none; color: inherit; }
+h1, h2 { text-align: center; }
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* Navbar */
+.navbar {
+    background: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar .nav-links a, .navbar button, .navbar select {
+    margin-left: 12px;
+    background: #444;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.navbar .nav-links a:hover, .navbar button:hover {
+    background: #666;
+}
+
+/* Glow Text */
+.glow {
+    color: #fff;
+    text-shadow: 0 0 5px #ff0080, 0 0 10px #ff0080, 0 0 20px #ff0080;
+}
+
+/* Background Slideshow */
+.background-slideshow {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.bg-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    animation: slideShow 60s infinite;
+    opacity: 0;
+}
+.bg-slide:nth-child(1) { animation-delay: 0s; }
+.bg-slide:nth-child(2) { animation-delay: 6s; }
+.bg-slide:nth-child(3) { animation-delay: 12s; }
+.bg-slide:nth-child(4) { animation-delay: 18s; }
+.bg-slide:nth-child(5) { animation-delay: 24s; }
+.bg-slide:nth-child(6) { animation-delay: 30s; }
+.bg-slide:nth-child(7) { animation-delay: 36s; }
+.bg-slide:nth-child(8) { animation-delay: 42s; }
+.bg-slide:nth-child(9) { animation-delay: 48s; }
+.bg-slide:nth-child(10) { animation-delay: 54s; }
+
+@keyframes slideShow {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 1; }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Upload & Result Box */
+.upload-box, .result-container, .live-container, .feedbacks-container, .history-container {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* Animated Buttons */
+.animated-btn {
+    background: #ff0080;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.animated-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Result Image + AR */
+.result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image-preview {
+    position: relative;
+}
+#result-image {
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+#ar-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('../images/ar_filter.png') no-repeat center center;
+    background-size: contain;
+    display: none;
+}
+
+/* Loader Spinner */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #ff0080;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Table */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.thumb {
+    width: 60px;
+    border-radius: 8px;
+}
+
+/* Feedback Cards */
+.feedback-card {
+    background: #fff;
+    border-left: 5px solid #ff0080;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+/* Toast Message */
+.toast {
+    background: #4caf50;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    border-radius: 5px;
+    animation: fadeInOut 4s ease;
+}
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
+    position: relative;
+}
+.close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999; /* Ensure it's on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.live-container {
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.webcam-box {
+    margin-bottom: 20px;
+}
+
+#webcam {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#prediction-result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.progress {
+    height: 20px;
+    margin-top: 10px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+}
+
+.live-controls button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.live-controls button:hover {
+    background-color: #0056b3;
+}
+.thumbnail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.thumbnail-grid img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+`/* Default light mode styles */
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark/Night mode styles */
+body.night-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Optional: style for night mode toggle button */
+.night-mode-toggle {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.night-mode-toggle:hover {
+    background-color: #444;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999; /* Ensure it's on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* 

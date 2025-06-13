@@ -1,0 +1,74 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html lang="{{ g.get('lang', 'en') }}" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _('Age & Gender predictor') }}</title>  <!-- Translated title -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+<!-- 🔐 Privacy Agreement Modal -->
+<div id="privacyAgreementModal" class="modal">
+  <div class="modal-content">
+    <h2>🔐 {{ _('Privacy Agreement') }}</h2>
+    <p>{{ _('This website is for educational purposes only.') }}</p>
+    <p>{{ _('Your images are not stored, shared, or sold. All processing happens locally.') }}</p>
+    <p>{{ _('By clicking "I Agree", you consent to use this tool under these terms.') }}</p>
+         <button onclick="agreeToPrivacy()" id="agreeBtn">{{ _('I Agree') }}</button>
+         <button onclick="declinePrivacy()" id="declineBtn">Decline</button>
+  </div>
+</div>
+
+<div class="navbar">
+    <h1 class="glow">👤 {{ _('Age & Gender Predictor') }}</h1>  <!-- Translated title here as well -->
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}">{{ _('Home') }}</a>
+        <a href="{{ url_for('live') }}">{{ _('Live Detection') }}</a>
+        <a href="{{ url_for('all_feedbacks') }}">{{ _('All Feedbacks') }}</a>
+                <select onchange="window.location.href='/?lang=' + this.value">
+            <option value="en" {% if request.args.get('lang') == 'en' %}selected{% endif %}>🌐 {{ _('English') }}</option>
+            <option value="fr" {% if request.args.get('lang') == 'fr' %}selected{% endif %}>{{ _('Français') }}</option>
+            <option value="ta" {% if request.args.get('lang') == 'ta' %}selected{% endif %}>{{ _('Tamil') }}</option>
+            <option value="hi" {% if request.args.get('lang') == 'hi' %}selected{% endif %}>{{ _('Hindi') }}</option>
+            <option value="te" {% if request.args.get('lang') == 'te' %}selected{% endif %}>{{ _('Telugu') }}</option>
+        </select>
+    </div>
+</div>
+
+<div class="content">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="toast">{{ messages[0] }}</div>
+        {% endif %}
+    {% endwith %}
+    
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Feedback Modal -->
+<div id="feedbackModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModal()" class="close">&times;</span>
+        <h2>{{ _('Give Feedback') }}</h2> <!-- Translated header -->
+        <form method="POST" action="{{ url_for('submit_feedback') }}">
+            <label>{{ _('Rating:') }}</label> <!-- Translated label -->
+            <select name="rating" required>
+                <option value="">{{ _('Choose...') }}</option>
+                <option>⭐</option>
+                <option>⭐⭐</option>
+                <option>⭐⭐⭐</option>
+                <option>⭐⭐⭐⭐</option>
+                <option>⭐⭐⭐⭐⭐</option>
+            </select><br>
+            <label>{{ _('Comment:') }}</label> <!-- Translated label -->
+            <textarea name="comment" required></textarea><br>
+            <button type="submit">{{ _('Submit') }}</button> <!-- Translated button text -->
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

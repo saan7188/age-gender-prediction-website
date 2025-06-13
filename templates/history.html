@@ -1,0 +1,36 @@
+<!-- templates/history.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="history-container">
+    <h2 class="glow">📜 Prediction History</h2>
+
+    {% if rows %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Age</th>
+                <th>Age Confidence</th>
+                <th>Gender</th>
+                <th>Gender Confidence</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='uploads/' ~ row[0]) }}" class="thumb"></td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}%</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}%</td>
+                <td>{{ row[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No history available yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

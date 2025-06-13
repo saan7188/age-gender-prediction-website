@@ -1,0 +1,19 @@
+<!-- templates/live.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="live-container">
+    <h2 class="glow">🎥 Live Age & Gender Detection</h2>
+
+    <div class="webcam-box">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="snapshotCanvas" style="display: none;"></canvas>
+    </div>
+
+    <div class="live-controls">
+        <button onclick="captureSnapshot()" class="animated-btn">📸 Capture</button>
+        <button onclick="openModal()" class="animated-btn">Give Feedback</button>
+    </div>
+
+    <div class="loader" id="live-loader" style="display: none;"></div>
+</div>
+{% endblock %}

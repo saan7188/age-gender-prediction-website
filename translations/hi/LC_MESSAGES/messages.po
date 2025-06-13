@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-04-12 12:12+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: hi\n"
+"Language-Team: hi <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app.py:78
+msgid "No file part"
+msgstr "कोई फ़ाइल भाग नहीं"
+
+#: app.py:83
+msgid "No selected file"
+msgstr "कोई चयनित फ़ाइल नहीं"
+
+#: app.py:116
+msgid "Feedback submitted!"
+msgstr "प्रतिक्रिया जमा की गई!"
+
+#: app.py:142
+msgid "Bug report submitted!"
+msgstr "बग रिपोर्ट जमा की गई!"
+
+# Welcome to Age and Gender Prediction
+#: templates/index.html:11
+msgid "Welcome to Age and Gender Prediction"
+msgstr "आयु और लिंग पूर्वानुमान में आपका स्वागत है"
+
+#: templates/index.html:12
+msgid "Upload Image(s) for Prediction"
+msgstr "पूर्वानुमान के लिए चित्र(चित्रों) को अपलोड करें"
+
+#: templates/index.html:16
+msgid "Predict"
+msgstr "पूर्वानुमान करें"
+
+#: templates/index.html:22
+msgid "✨ You can also use"
+msgstr "✨ आप इसका भी उपयोग कर सकते हैं"
+
+#: templates/index.html:23 templates/layout.html:17
+msgid "Live Detection"
+msgstr "लाइव पहचान"
+
+#: templates/index.html:24
+msgid "for webcam prediction!"
+msgstr "वेबकैम पूर्वानुमान के लिए!"
+
+#: templates/index.html:28
+msgid "Report a Bug"
+msgstr "बग रिपोर्ट करें"
+
+#: templates/layout.html:6 templates/layout.html:14
+msgid "Age & Gender Detector"
+msgstr "आयु और लिंग पहचानक"
+
+#: templates/layout.html:16
+msgid "Home"
+msgstr "मुख्य पृष्ठ"
+
+#: templates/layout.html:18
+msgid "Prediction History"
+msgstr "पूर्वानुमान इतिहास"
+
+#: templates/layout.html:19
+msgid "All Feedbacks"
+msgstr "सभी प्रतिक्रियाएँ"
+
+#: templates/layout.html:22
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+#: templates/layout.html:23
+msgid "Français"
+msgstr "फ्रेंच"
+
+#: templates/layout.html:24
+msgid "Tamil"
+msgstr "तमिल"
+
+#: templates/layout.html:25
+msgid "Hindi"
+msgstr "हिंदी"
+
+#: templates/layout.html:26
+msgid "Telugu"
+msgstr "तेलुगू"
+
+#: templates/layout.html:47
+msgid "Rating:"
+msgstr "रेटिंग:"
+
+#: templates/layout.html:49
+msgid "Choose..."
+msgstr "चुनें..."
+
+#: templates/layout.html:56
+msgid "Comment:"
+msgstr "टिप्पणी:"
+
+#: templates/layout.html:58
+msgid "Submit"
+msgstr "जमा करें"
+
+#: templates/layout.html:67
+msgid "Report an Issue"
+msgstr "समस्या रिपोर्ट करें"
+
+#: templates/layout.html:69
+msgid "Describe the bug..."
+msgstr "बग का वर्णन करें..."
+
+#: templates/layout.html:70
+msgid "Send"
+msgstr "भेजें"
