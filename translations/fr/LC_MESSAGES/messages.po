@@ -17,6 +17,24 @@ msgstr ""
 msgid "No file part"
 msgstr "Aucune partie de fichier"
 
+msgid "📸 Tips for Best Results"
+msgstr "📸 Conseils pour de meilleurs résultats"
+
+msgid "Use Good Lighting: Ensure your face is well-lit. Avoid backlight or shadows."
+msgstr "Utilisez un bon éclairage : assurez-vous que votre visage est bien éclairé. Évitez le contre-jour ou les ombres."
+
+msgid "Face Forward: Look directly at the camera with your face fully visible."
+msgstr "Faites face à l'appareil photo : regardez-le directement, avec le visage entièrement visible."
+
+msgid "Avoid Obstructions: No sunglasses, masks, or other items covering your face."
+msgstr "Évitez les obstructions : pas de lunettes de soleil, masques ou autres objets couvrant le visage."
+
+msgid "Clear Image: Use a focused, high-quality photo."
+msgstr "Image claire : utilisez une photo nette et de haute qualité."
+
+msgid "Only One Face: Please upload an image with just one person."
+msgstr "Un seul visage : veuillez télécharger une image avec une seule personne."
+
 #: app.py:83
 msgid "No selected file"
 msgstr "Aucun fichier sélectionné"

@@ -105,6 +105,27 @@ function disableActionsIfNotAgreed() {
         });
     }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('imageInput');
+    const previewImage = document.getElementById('preview-image');
+    const previewContainer = document.getElementById('preview-container');
+
+    if (input) {
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        });
+    }
+});
 
 
 // 🎥 Init Webcam

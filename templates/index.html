@@ -5,18 +5,35 @@
         <img src="{{ url_for('static', filename='images/backgrounds/bg' ~ i ~ '.jpeg') }}" class="bg-slide">
     {% endfor %}
 </div>
-
 <div class="upload-box">
     <h1>{{ _('Welcome to Age and Gender Prediction') }}</h1>
     <h2 class="glow">{{ _('Upload Image for Prediction') }}</h2>
 
+    <!-- 📸 Instructions -->
+    <div class="instructions">
+        <h3>{{ _('📸 Tips for Best Results') }}</h3>
+        <ul>
+            <li>{{ _('Use Good Lighting: Ensure your face is well-lit. Avoid backlight or shadows.') }}</li>
+            <li>{{ _('Face Forward: Look directly at the camera with your face fully visible.') }}</li>
+            <li>{{ _('Avoid Obstructions: No sunglasses, masks, or other items covering your face.') }}</li>
+            <li>{{ _('Clear Image: Use a focused, high-quality photo.') }}</li>
+            <li>{{ _('Only One Face: Please upload an image with just one person.') }}</li>
+        </ul>
+    </div>
+
+    <!-- 🔍 Image Preview -->
+    <div id="preview-container" style="display:none; margin-top:15px;">
+        <h4>{{ _('Image Preview') }}</h4>
+        <img id="preview-image" src="" alt="{{ _('Preview') }}" style="max-width:100%; border-radius:10px;">
+    </div>
+
+    <!-- 📤 Upload Form -->
     <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
+        <input type="file" name="image" id="imageInput" accept="image/*" required>
         <button type="submit" class="animated-btn">{{ _('Predict') }}</button>
     </form>
 
     <br>
-
     <p>
         {{ _('✨ You can also use') }} 
         <strong>{{ _('Live Detection') }}</strong> 
@@ -24,5 +41,6 @@
     </p>
 
     <button class="animated-btn" onclick="openModal()">{{ _('Give Feedback') }}</button>
-    </div>
+</div>
+
 {% endblock %}
