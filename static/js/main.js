@@ -1,5 +1,3 @@
-
-
 // 📤 Share Result
 function shareResult() {
     const img = document.getElementById("result-image").src;
@@ -9,7 +7,7 @@ function shareResult() {
     if (navigator.share) {
         navigator.share({
             title: 'Age & Gender Prediction',
-            text: `${age}\n${gender}`,
+            text: ${age}\n${gender},
             url: window.location.href
         }).then(() => showToast("Shared successfully!"))
           .catch(err => showToast("Share canceled."));
@@ -27,15 +25,11 @@ function captureSnapshot() {
     canvas.height = video.videoHeight;
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Convert canvas to blob and send to backend
     canvas.toBlob(function(blob) {
         const formData = new FormData();
         formData.append('image', blob, 'snapshot.png');
-
-        // Show loader
         document.getElementById('live-loader').style.display = 'block';
 
-        // Send to /upload route
         fetch('/upload?lang=' + getLang(), {
             method: 'POST',
             body: formData
@@ -56,31 +50,42 @@ function captureSnapshot() {
     }, 'image/png');
 }
 
-// helper to get selected language
+// 🌐 Language helper
 function getLang() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('lang') || 'en';
 }
-// Check if user already agreed
-window.addEventListener("DOMContentLoaded", function () {
+
+// ✅ Privacy Modal Handling
+document.addEventListener("DOMContentLoaded", function () {
     if (!sessionStorage.getItem("privacyAccepted")) {
         document.getElementById("privacyAgreementModal").style.display = "block";
+        disableActions();
     }
 });
 
+// 👇 Agree to privacy
 function agreeToPrivacy() {
     sessionStorage.setItem("privacyAccepted", true);
     document.getElementById("privacyAgreementModal").style.display = "none";
+    enableActions();
 }
+
+// 👇 Decline privacy
 function declinePrivacy() {
     alert("You need to accept the Privacy Agreement to use this app.");
     document.getElementById("privacyAgreementModal").style.display = "block";
+    disableActions();
+}
 
-    // Disable interaction with all buttons and links except modal
+// 👇 Disable all interactive buttons
+function disableActions() {
     const buttons = document.querySelectorAll("button, a.cta-button");
     buttons.forEach(btn => {
         if (!btn.closest("#privacyAgreementModal")) {
             btn.classList.add("disabled");
+            btn.disabled = true;
+            btn.dataset.originalOnclick = btn.onclick;
             btn.onclick = (e) => {
                 e.preventDefault();
                 alert("Please accept the Privacy Agreement first.");
@@ -89,22 +94,17 @@ function declinePrivacy() {
     });
 }
 
-window.addEventListener("DOMContentLoaded", disableActionsIfNotAgreed);
-function disableActionsIfNotAgreed() {
-    if (!sessionStorage.getItem("privacyAccepted")) {
-        const buttons = document.querySelectorAll("button, a.cta-button");
-        buttons.forEach(btn => {
-            // Skip the agree button!
-            if (!btn.closest("#privacyAgreementModal")) {
-                btn.classList.add("disabled");
-                btn.onclick = (e) => {
-                    e.preventDefault();
-                    alert("Please accept the Privacy Agreement first.");
-                };
-            }
-        });
-    }
+// 👇 Enable buttons again
+function enableActions() {
+    const buttons = document.querySelectorAll("button, a.cta-button");
+    buttons.forEach(btn => {
+        btn.classList.remove("disabled");
+        btn.disabled = false;
+        btn.onclick = null;
+    });
 }
+
+// 🖼 Image Preview on Upload
 document.addEventListener('DOMContentLoaded', function () {
     const input = document.getElementById('imageInput');
     const previewImage = document.getElementById('preview-image');
@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 // 🎥 Init Webcam
 if (document.getElementById('webcam')) {
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -145,7 +144,7 @@ function closeModal() {
     document.getElementById("feedbackModal").style.display = "none";
 }
 window.onclick = function (e) {
-    if (e.target.className === "modal") {
+    if (e.target.classList.contains("modal")) {
         closeModal();
     }
 }
@@ -167,7 +166,7 @@ function filterFeedbacks() {
 
     cards.forEach(card => {
         const cardRating = card.dataset.rating;
-        const cardComment = card.dataset.comment;
+        const cardComment = card.dataset.comment.toLowerCase();
 
         const matchesRating = (rating === "all" || cardRating === rating);
         const matchesSearch = cardComment.includes(search);
@@ -176,7 +175,7 @@ function filterFeedbacks() {
     });
 }
 
-// 🛠️ Tooltip (basic)
+// 🛠 Tooltips
 document.querySelectorAll('[data-tooltip]').forEach(el => {
     el.addEventListener('mouseenter', () => {
         const tooltip = document.createElement('span');
