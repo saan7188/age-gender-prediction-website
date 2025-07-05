@@ -62,6 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("privacyAgreementModal").style.display = "block";
         disableActions();
     }
+    else {
+    enableActions(); // ✅ This should be added
+    }
 });
 
 // 👇 Agree to privacy
