@@ -58,7 +58,7 @@ function getLang() {
 
 // ✅ Privacy Modal Handling
 document.addEventListener("DOMContentLoaded", function () {
-    if (!sessionStorage.getItem("privacyAccepted")) {
+    if (!localStorage.getItem("privacyAccepted")) {
         document.getElementById("privacyAgreementModal").style.display = "block";
         disableActions();
     }
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 👇 Agree to privacy
 function agreeToPrivacy() {
-    sessionStorage.setItem("privacyAccepted", true);
+    localStorage.setItem("privacyAccepted", true);
     document.getElementById("privacyAgreementModal").style.display = "none";
     enableActions();
 }
