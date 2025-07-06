@@ -102,8 +102,7 @@ function enableActions() {
     const buttons = document.querySelectorAll("button, a.cta-button");
     buttons.forEach(btn => {
         btn.classList.remove("disabled");
-        btn.disabled = false;
-        btn.onclick = null;
+        btn.disabled = false
     });
 }
 
