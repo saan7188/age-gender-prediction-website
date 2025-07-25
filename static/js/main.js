@@ -176,6 +176,13 @@ function filterFeedbacks() {
         card.style.display = matchesRating && matchesSearch ? "block" : "none";
     });
 }
+// ✅ Ensure "Give Feedback" button works
+document.addEventListener("DOMContentLoaded", function () {
+    const feedbackBtn = document.getElementById("giveFeedbackBtn");
+    if (feedbackBtn) {
+        feedbackBtn.addEventListener("click", openModal);
+    }
+});
 
 // 🛠 Tooltips
 document.querySelectorAll('[data-tooltip]').forEach(el => {
