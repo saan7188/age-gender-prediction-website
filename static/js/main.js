@@ -56,55 +56,6 @@ function getLang() {
     return urlParams.get('lang') || 'en';
 }
 
-// ✅ Privacy Modal Handling
-document.addEventListener("DOMContentLoaded", function () {
-    if (!localStorage.getItem("privacyAccepted")) {
-        document.getElementById("privacyAgreementModal").style.display = "block";
-        disableActions();
-    }
-    else {
-    enableActions(); // ✅ This should be added
-    }
-});
-
-// 👇 Agree to privacy
-function agreeToPrivacy() {
-    localStorage.setItem("privacyAccepted", true);
-    document.getElementById("privacyAgreementModal").style.display = "none";
-    enableActions();
-}
-
-// 👇 Decline privacy
-function declinePrivacy() {
-    alert("You need to accept the Privacy Agreement to use this app.");
-    document.getElementById("privacyAgreementModal").style.display = "block";
-    disableActions();
-}
-
-// 👇 Disable all interactive buttons
-function disableActions() {
-    const buttons = document.querySelectorAll("button, a.cta-button");
-    buttons.forEach(btn => {
-        if (!btn.closest("#privacyAgreementModal")) {
-            btn.classList.add("disabled");
-            btn.disabled = true;
-            btn.dataset.originalOnclick = btn.onclick;
-            btn.onclick = (e) => {
-                e.preventDefault();
-                alert("Please accept the Privacy Agreement first.");
-            };
-        }
-    });
-}
-
-// 👇 Enable buttons again
-function enableActions() {
-    const buttons = document.querySelectorAll("button, a.cta-button");
-    buttons.forEach(btn => {
-        btn.classList.remove("disabled");
-        btn.disabled = false
-    });
-}
 
 // 🖼 Image Preview on Upload
 document.addEventListener('DOMContentLoaded', function () {
