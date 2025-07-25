@@ -7,7 +7,7 @@ function shareResult() {
     if (navigator.share) {
         navigator.share({
             title: 'Age & Gender Prediction',
-            text: ${age}\n${gender},
+            text: `${age}\n${gender}`,
             url: window.location.href
         }).then(() => showToast("Shared successfully!"))
           .catch(err => showToast("Share canceled."));
@@ -55,7 +55,6 @@ function getLang() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('lang') || 'en';
 }
-
 
 // 🖼 Image Preview on Upload
 document.addEventListener('DOMContentLoaded', function () {
@@ -127,13 +126,6 @@ function filterFeedbacks() {
         card.style.display = matchesRating && matchesSearch ? "block" : "none";
     });
 }
-// ✅ Ensure "Give Feedback" button works
-document.addEventListener("DOMContentLoaded", function () {
-    const feedbackBtn = document.getElementById("giveFeedbackBtn");
-    if (feedbackBtn) {
-        feedbackBtn.addEventListener("click", openModal);
-    }
-});
 
 // 🛠 Tooltips
 document.querySelectorAll('[data-tooltip]').forEach(el => {
@@ -147,4 +139,12 @@ document.querySelectorAll('[data-tooltip]').forEach(el => {
         const tooltip = el.querySelector('.tooltip');
         if (tooltip) tooltip.remove();
     });
+});
+
+// ✅ Enable Feedback Button
+document.addEventListener("DOMContentLoaded", function () {
+    const feedbackBtn = document.getElementById("giveFeedbackBtn");
+    if (feedbackBtn) {
+        feedbackBtn.addEventListener("click", openModal);
+    }
 });
