@@ -9,17 +9,6 @@
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </head>
 <body>
-<!-- 🔐 Privacy Agreement Modal -->
-<div id="privacyAgreementModal" class="modal">
-  <div class="modal-content">
-    <h2>🔐 {{ _('Privacy Agreement') }}</h2>
-    <p>{{ _('This website is for educational purposes only.') }}</p>
-    <p>{{ _('Your images are not stored, shared, or sold. All processing happens locally.') }}</p>
-    <p>{{ _('By clicking "I Agree", you consent to use this tool under these terms.') }}</p>
-         <button onclick="agreeToPrivacy()" id="agreeBtn">{{ _('I Agree') }}</button>
-         <button onclick="declinePrivacy()" id="declineBtn">Decline</button>
-  </div>
-</div>
 
 <div class="navbar">
     <h1 class="glow">👤 {{ _('Age & Gender Predictor') }}</h1>  <!-- Translated title here as well -->
